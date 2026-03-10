@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --parchment: #f4e4bc;
+  --ink: #3c2a21;
+  --gryffindor: #740001;
+  --slytherin: #1a472a;
+  --ravenclaw: #0e1a40;
+  --hufflepuff: #ecb939;
+  --gold: #ffc500;
+}
+
+body {
+  margin: 0;
+  background-color: #0b0d17; /* Deeper night sky color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: 'Crimson Text', serif;
+  overflow: hidden; /* Prevents scrollbars from the animation */
+  position: relative;
+}
+
+/* --- MAGICAL BACKGROUND ANIMATION --- */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: magicDrift 100s linear infinite;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@keyframes magicDrift {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+/* ------------------------------------ */
+
+.parchment-card {
+  background: var(--parchment);
+  padding: 3rem;
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 100px rgba(0,0,0,0.1);
+  border: 2px solid #d4b996;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  animation: parchmentAppear 1s ease-out;
+}
+
+@keyframes parchmentAppear {
+  from { opacity: 0; transform: scale(0.9) rotate(-2deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: rgba(0,0,0,0.05);
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  font-family: inherit;
+  font-size: 1.1rem;
+}
+
+button {
+  background: var(--ink);
+  color: var(--parchment);
+  border: 1px solid var(--ink);
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: var(--gryffindor);
+  color: var(--gold);
+  box-shadow: 0 0 20px var(--gold);
+}
+
+.sorting-hat-img {
+  width: 180px;
+  filter: sepia(0.5) drop-shadow(0 0 10px rgba(0,0,0,0.5));
+  animation: wobble 2s infinite ease-in-out;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.Gryffindor { color: var(--gryffindor); }
+.Slytherin { color: var(--slytherin); }
+.Ravenclaw { color: var(--ravenclaw); }
+.Hufflepuff { color: var(--hufflepuff); }
+
+.secret-message {
+  font-style: italic;
+  margin-top: 20px;
+  font-weight: bold;
+  border: 1px dashed var(--ink);
+  padding: 10px;
+  animation: flash 2s infinite;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
